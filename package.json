@@ -1,0 +1,29 @@
+{
+  "name": "linux-lab",
+  "version": "1.0.0",
+  "description": "linux-lab help you practise linux commands via a set of exercises.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "figlet": "^1.2.4",
+    "inquirer": "^7.0.0",
+    "terminal-kit": "^1.31.4"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/clear": "^0.1.0",
+    "@types/figlet": "^1.2.0",
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^12.11.5",
+    "@types/terminal-kit": "^1.28.0",
+    "@typescript-eslint/eslint-plugin": "^2.5.0",
+    "@typescript-eslint/parser": "^2.5.0",
+    "eslint": "^6.5.1",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.6.4"
+  }
+}
