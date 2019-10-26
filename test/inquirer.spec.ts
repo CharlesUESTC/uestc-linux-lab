@@ -1,5 +1,5 @@
 import assert from "assert";
-import { questionGenerator, validInput } from "../lib/inquirer";
+import { questionGenerator } from "../src/lib/inquirer";
 
 const rawQuestions = [
   {
@@ -32,24 +32,12 @@ const inquirerQuestions = [
       'B. cd ~',
       'C. cd -',
       'D. cd !$'
-    ],
-    validate: (value: string) => {
-      if (value.length) {
-        return true;
-      }
-    }
+    ]
   },
   {
     name: "2",
-    type: "editor",
-    message: "请写出进入上一次工作路径的命令。",
-    validate: (value: string) => {
-      if (validInput(value)) {
-        return true;
-      } else {
-        return "请输入有效命令";
-      }
-    }
+    type: "input",
+    message: "请写出进入上一次工作路径的命令。"
   }
 ];
 
