@@ -1,0 +1,25 @@
+{
+  "progress": {},
+  "easy": [
+    {
+      "id": "1",
+      "type": "sa",
+      "title": "进入上一次工作路径的命令是？",
+      "choices": [
+        "A. cd /",
+        "B. cd ~",
+        "C. cd -",
+        "D. cd !$"
+      ],
+      "answer": "C. cd -"
+    },
+    {
+      "id": "2",
+      "type": "qa",
+      "title": "请写出进入上一次工作路径的命令。",
+      "answer": "cd -"
+    }
+  ],
+  "medium": [],
+  "hard": []
+}

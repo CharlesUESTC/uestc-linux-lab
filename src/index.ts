@@ -14,7 +14,6 @@ terminal.clear();
 
 terminal
   .yellow(figlet.textSync('Linux-Lab', { horizontalLayout: 'full' }))
-  .cyan('\nWelcome to Linux-Lab!\n')
 
 terminal.singleColumnMenu(MENU, (error: any, response: SingleColumnMenuResponse) => {
   switch (response.selectedIndex) {
