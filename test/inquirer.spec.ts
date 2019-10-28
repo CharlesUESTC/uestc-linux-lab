@@ -1,5 +1,5 @@
 import assert from "assert";
-import { questionGenerator } from "../src/lib/inquirer";
+import { questionGenerator } from "../src/lib/enquirer";
 
 const rawQuestions = [
   {
@@ -25,7 +25,7 @@ const rawQuestions = [
 const inquirerQuestions = [
   {
     name: '1',
-    type: 'list',
+    type: 'select',
     message: '进入上一次工作路径的命令是？',
     choices: [
       'A. cd /',

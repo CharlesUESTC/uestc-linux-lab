@@ -1,8 +1,7 @@
-import inquirer from "inquirer";
-
+import { prompt } from "enquirer";
 import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
-import { questionGenerator } from "./lib/inquirer";
+import { questionGenerator } from "./lib/enquirer";
 import { db } from "./lib/lowdb";
 
 export const DIFFICULTY_LEVELS = [
@@ -11,11 +10,14 @@ export const DIFFICULTY_LEVELS = [
   'hard'
 ]
 
-export function start(level: number) {
+export async function start(level: number) {
   terminal.clear();
 
   const rawQuestions = db.get(DIFFICULTY_LEVELS[level]).value();
-  return inquirer.prompt(questionGenerator(rawQuestions));
+
+  const response = await prompt(questionGenerator(rawQuestions));
+  
+  return response;
 }
 
 export function selectDifficultyLevels() {

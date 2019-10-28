@@ -7,13 +7,13 @@ interface IQuestion {
 }
 
 const TYPE_MAP = {
-  sa: 'list',
+  sa: 'select',
   qa: 'input'
 };
 
-/** 读取 json 格式的题库生成 inquirer.js 的 question 数组 */
+/** 读取 json 格式的题库生成 enquirer.js 的 question 数组 */
 export function questionGenerator(rawQuestion: Object[]) {
-  const inquirerQuestions = rawQuestion.map((v: IQuestion) => {
+  const enquirerQuestions = rawQuestion.map((v: IQuestion) => {
     let ret = {
       name: v.id,
       type: TYPE_MAP[v.type],
@@ -27,5 +27,5 @@ export function questionGenerator(rawQuestion: Object[]) {
     return ret;
   })
 
-  return inquirerQuestions;
+  return enquirerQuestions;
 }
