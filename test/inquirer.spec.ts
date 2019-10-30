@@ -7,10 +7,10 @@ const rawQuestions = [
     type: "sa",
     title: "进入上一次工作路径的命令是？",
     choices: [
-      'A. cd /',
-      'B. cd ~',
-      'C. cd -',
-      'D. cd !$'
+      "A. cd /",
+      "B. cd ~",
+      "C. cd -",
+      "D. cd !$"
     ],
     answer: "C. cd -"
   },
@@ -24,14 +24,14 @@ const rawQuestions = [
 
 const inquirerQuestions = [
   {
-    name: '1',
-    type: 'select',
-    message: '进入上一次工作路径的命令是？',
+    name: "1",
+    type: "select",
+    message: "进入上一次工作路径的命令是？",
     choices: [
-      'A. cd /',
-      'B. cd ~',
-      'C. cd -',
-      'D. cd !$'
+      "A. cd /",
+      "B. cd ~",
+      "C. cd -",
+      "D. cd !$"
     ]
   },
   {

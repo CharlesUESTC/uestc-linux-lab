@@ -4,16 +4,16 @@ import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
 import { selectDifficultyLevels } from "./practice";
 
 const MENU = [
-  '【开始答题】',
-  '【查看统计】',
-  '【关于】',
-  '【退出】'
+  "【开始答题】",
+  "【查看统计】",
+  "【关于】",
+  "【退出】"
 ];
 
 terminal.clear();
 
 terminal
-  .yellow(figlet.textSync('Linux-Lab', { horizontalLayout: 'full' }))
+  .yellow(figlet.textSync("Linux-Lab", { horizontalLayout: "full" }))
 
 terminal.singleColumnMenu(MENU, (error: any, response: SingleColumnMenuResponse) => {
   switch (response.selectedIndex) {
