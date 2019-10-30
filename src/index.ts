@@ -13,7 +13,7 @@ const MENU = [
 terminal.clear();
 
 terminal
-  .yellow(figlet.textSync("Linux-Lab", { horizontalLayout: "full" }))
+  .yellow(figlet.textSync("UESTC-Linux-Lab", { horizontalLayout: "full" }))
 
 terminal.singleColumnMenu(MENU, (error: any, response: SingleColumnMenuResponse) => {
   switch (response.selectedIndex) {

@@ -1,4 +1,4 @@
-interface IQuestion {
+export interface IQuestion {
   id: string;
   type: "sa" | "qa";
   title: string;
@@ -6,7 +6,7 @@ interface IQuestion {
   answer: string;
 }
 
-const TYPE_MAP = {
+export const TYPE_MAP = {
   sa: "select",
   qa: "input"
 };
