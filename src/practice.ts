@@ -12,7 +12,10 @@ export function start() {
     if(response.selectedIndex === 0) {
       terminal.cyan("请选择难度：\n");
       terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
-        selectDifficultyLevels(response.selectedIndex);
+        selectDifficultyLevels(response.selectedIndex).catch((e) => {
+          console.log(e);
+          process.exit();
+        });
       });
     } else {
       // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
