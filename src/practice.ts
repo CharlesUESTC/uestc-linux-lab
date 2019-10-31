@@ -1,7 +1,7 @@
 import { prompt } from "enquirer";
 import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
-import { questionGenerator, IQuestion } from "./lib/enquirer";
+import { questionGenerator, Question } from "./lib/enquirer";
 import { db } from "./lib/lowdb";
 
 export function start() {
@@ -31,7 +31,7 @@ export function start() {
 
   // TODO: 抽取选择题和填空题，排除已经答过的题目
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
-  let rawQuestions: IQuestion[] = [];
+  let rawQuestions: Question[] = [];
   
   rawQuestions = JSON.parse(JSON.stringify(db.get("easyqa")
     // @ts-ignore
@@ -44,7 +44,7 @@ export function start() {
   const result = {
     mistakes: [] as number[]
   };
-  rawQuestions.forEach((question: IQuestion, index: number) => {
+  rawQuestions.forEach((question: Question, index: number) => {
     if (question.answer !== userAnswers[index]) {
       result.mistakes.push(index)
     }

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import figlet from "figlet";
 import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";

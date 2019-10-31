@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "npm run lint && npm run build:src",
+    "build": "npm run build:src",
     "build:src": "tsc -p .",
-    "lint": "eslint \"src/**/*\" \"test/**/*\"",
     "test": "cross-env NODE_ENV=test mocha -r espower-typescript/guess test/**/*.spec.ts"
   },
-  "author": "",
+  "author": "agrimonia",
   "license": "ISC",
   "dependencies": {
     "enquirer": "^2.3.2",
@@ -26,8 +25,6 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.5",
     "@types/terminal-kit": "^1.28.0",
-    "@typescript-eslint/eslint-plugin": "^2.5.0",
-    "@typescript-eslint/parser": "^2.5.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.5.1",
     "espower-typescript": "^9.0.2",
