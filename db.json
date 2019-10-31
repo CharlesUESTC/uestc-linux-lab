@@ -1,11 +1,8 @@
 {
   "progress": {
-    "overview": {
-      "1": "C. cd -",
-      "2": "cd -"
-    }
+    "overview": {}
   },
-  "easy-qa": [
+  "easyqa": [
     {
       "title": "输入一个命令，把上个命令的参数作为cd参数使用",
       "answer": "cd !$"
@@ -99,5 +96,11 @@
       "answer": "head -n -10 t.log"
     }
   ],
-  "questions": []
+  "easyselect": [
+    {
+      "title": "",
+      "choices": [],
+      "answer": ""
+    }
+  ]
 }

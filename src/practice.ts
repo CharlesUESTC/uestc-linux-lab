@@ -4,12 +4,6 @@ import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
 import { questionGenerator, IQuestion } from "./lib/enquirer";
 import { db } from "./lib/lowdb";
 
-export const DIFFICULTY_LEVELS = [
-  "easy",
-  "medium",
-  "hard"
-]
-
 export function start() {
   terminal.clear();
 
@@ -18,7 +12,7 @@ export function start() {
     if(response.selectedIndex === 0) {
       terminal.cyan("请选择难度：\n");
       terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
-        selectDifficultyLevels(DIFFICULTY_LEVELS[response.selectedIndex]);
+        selectDifficultyLevels(response.selectedIndex);
       });
     } else {
       // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
@@ -28,14 +22,18 @@ export function start() {
   });
 }
 
-export async function selectDifficultyLevels(level: string) {
+/**
+ * 选择题目难度，进入不同难度的答题页
+ * @param level 数字 0/1/2，按菜单顺序，0 为简单，1 为普通，2为困难
+ */
+ export async function selectDifficultyLevels(level: number) {
   terminal.clear();
 
   // TODO: 抽取选择题和填空题，排除已经答过的题目
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
   let rawQuestions: IQuestion[] = [];
   
-  rawQuestions = JSON.parse(JSON.stringify(db.get("easy-qa")
+  rawQuestions = JSON.parse(JSON.stringify(db.get("easyqa")
     // @ts-ignore
     .value()));
 

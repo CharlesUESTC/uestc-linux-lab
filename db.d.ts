@@ -2,13 +2,19 @@
 export let db: {
   progress: {
     overview: any;
-  },
-  questions: {
-    /** 题目难度，"easy" | "medium" | "hard" */
-    difficulty: string,
+  };
+  easyselect: {
     /** 题干 */
-    title: string,
+    title: string;
     /** 选择题选项 */
     choices?: string[];
+    /** 答案 */
+    answer: string;
+  }[];
+  easyqa: {
+    /** 题干 */
+    title: string;
+    /** 答案 */
+    answer: string;
   }[];
 }
