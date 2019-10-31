@@ -4,8 +4,6 @@ export let db: {
     overview: any;
   },
   questions: {
-    /** 题目ID */
-    id: string,
     /** 题目类型，"sa"(选择题) | "qa"(简答题) */
     type: string,
     /** 题目难度，"easy" | "medium" | "hard" */

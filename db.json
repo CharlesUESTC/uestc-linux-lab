@@ -7,7 +7,6 @@
   },
   "questions": [
     {
-      "id": "1",
       "type": "sa",
       "difficulty": "easy",
       "title": "进入上一次工作路径的命令是？",
@@ -20,11 +19,16 @@
       "answer": "C. cd -"
     },
     {
-      "id": "2",
       "type": "qa",
       "difficulty": "easy",
       "title": "请写出进入上一次工作路径的命令。",
       "answer": "cd -"
+    },
+    {
+      "type": "qa",
+      "difficulty": "easy",
+      "title": "请写出进入 \"home\" 目录的命令。",
+      "answer": "cd ~"
     }
   ]
 }

@@ -3,7 +3,6 @@ import { questionGenerator } from "../src/lib/enquirer";
 
 const rawQuestions = [
   {
-    id: "1",
     type: "sa",
     title: "进入上一次工作路径的命令是？",
     choices: [
@@ -15,7 +14,6 @@ const rawQuestions = [
     answer: "C. cd -"
   },
   {
-    id: "2",
     type: "qa",
     title: "请写出进入上一次工作路径的命令。",
     answer: "cd -"

@@ -1,5 +1,4 @@
 export interface IQuestion {
-  id: string;
   type: "sa" | "qa";
   title: string;
   choices?: string[];
@@ -15,7 +14,7 @@ export const TYPE_MAP = {
 export function questionGenerator(rawQuestion: Object[]) {
   return rawQuestion.map((v: IQuestion, index: number) => {
     let ret = {
-      name: v.id,
+      name: String(index),
       type: TYPE_MAP[v.type],
       message: `${index + 1}.${v.title}`
     } 
