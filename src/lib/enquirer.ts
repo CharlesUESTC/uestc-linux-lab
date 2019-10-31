@@ -13,11 +13,11 @@ export const TYPE_MAP = {
 
 /** 读取 json 格式的题库生成 enquirer.js 的 question 数组 */
 export function questionGenerator(rawQuestion: Object[]) {
-  return rawQuestion.map((v: IQuestion) => {
+  return rawQuestion.map((v: IQuestion, index: number) => {
     let ret = {
       name: v.id,
       type: TYPE_MAP[v.type],
-      message: v.title
+      message: `${index + 1}.${v.title}`
     } 
 
     if (v.type === "sa") {

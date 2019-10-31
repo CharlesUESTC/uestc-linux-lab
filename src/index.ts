@@ -17,12 +17,12 @@ terminal
 
 terminal.singleColumnMenu(MENU, (error: any, response: SingleColumnMenuResponse) => {
   switch (response.selectedIndex) {
-    case 0:
+    case 0: //【开始答题】
       selectDifficultyLevels();
       break;
-    case 1:
-    case 2:
-    case 3:
+    case 1: //【查看统计】
+    case 2: //【关于】
+    case 3: //【退出】
     default:
       process.exit();
   }

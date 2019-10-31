@@ -19,9 +19,7 @@ export async function start(level: number) {
     .filter({ difficulty: DIFFICULTY_LEVELS[level]})
     .value()));
 
-  console.log(rawQuestions);
   const response = await prompt(questionGenerator(rawQuestions));
-  console.log(response);
   
   // 错题统计
   const userAnswers = Object.values(response);
@@ -46,7 +44,7 @@ export async function start(level: number) {
     console.log(`错题解析：\n`);
     console.log(answers);
   } else {
-    terminal.cyan(`全对啦👍继续努力！\n`);
+    terminal.cyan(`全对啦 👍 继续努力！\n`);
   }
   // TODO: 存储统计数据
 
@@ -56,8 +54,19 @@ export async function start(level: number) {
 export function selectDifficultyLevels() {
   terminal.clear();
 
-  terminal.cyan("请选择难度：\n");
-  terminal.singleColumnMenu(DIFFICULTY_LEVELS, (error: any, response: SingleColumnMenuResponse) => {
-    start(response.selectedIndex);
+  terminal.cyan("请选择模式：\n");
+  terminal.singleColumnMenu(["【自选模式】", "【闯关模式】"], (error: any, response: SingleColumnMenuResponse) => {
+    if(response.selectedIndex === 0) {
+      terminal.cyan("请选择难度：\n");
+      terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
+        start(response.selectedIndex);
+      });
+    } else {
+      // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
+      terminal.cyan("开发中，敬请期待");
+      process.exit();
+    }
   });
+
+  
 }
