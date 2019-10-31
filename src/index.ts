@@ -1,7 +1,7 @@
 import figlet from "figlet";
 import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
-import { selectDifficultyLevels } from "./practice";
+import { start } from "./practice";
 
 const MENU = [
   "【开始答题】",
@@ -18,7 +18,7 @@ terminal
 terminal.singleColumnMenu(MENU, (error: any, response: SingleColumnMenuResponse) => {
   switch (response.selectedIndex) {
     case 0: //【开始答题】
-      selectDifficultyLevels();
+      start();
       break;
     case 1: //【查看统计】
     case 2: //【关于】

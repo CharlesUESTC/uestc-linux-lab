@@ -10,13 +10,33 @@ export const DIFFICULTY_LEVELS = [
   "hard"
 ]
 
-export async function start(level: number) {
+export function start() {
   terminal.clear();
 
+  terminal.cyan("请选择模式：\n");
+  terminal.singleColumnMenu(["【自选模式】", "【闯关模式】"], (error: any, response: SingleColumnMenuResponse) => {
+    if(response.selectedIndex === 0) {
+      terminal.cyan("请选择难度：\n");
+      terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
+        selectDifficultyLevels(DIFFICULTY_LEVELS[response.selectedIndex]);
+      });
+    } else {
+      // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
+      terminal.cyan("开发中，敬请期待");
+      process.exit();
+    }
+  });
+}
+
+export async function selectDifficultyLevels(level: string) {
+  terminal.clear();
+
+  // TODO: 抽取选择题和填空题，排除已经答过的题目
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
-  const rawQuestions: IQuestion[] = JSON.parse(JSON.stringify(db.get("questions")
+  let rawQuestions: IQuestion[] = [];
+  
+  rawQuestions = JSON.parse(JSON.stringify(db.get("easy-qa")
     // @ts-ignore
-    .filter({ difficulty: DIFFICULTY_LEVELS[level]})
     .value()));
 
   const response = await prompt(questionGenerator(rawQuestions));
@@ -49,24 +69,4 @@ export async function start(level: number) {
   // TODO: 存储统计数据
 
   // db.set("progress.overview", response).write();
-}
-
-export function selectDifficultyLevels() {
-  terminal.clear();
-
-  terminal.cyan("请选择模式：\n");
-  terminal.singleColumnMenu(["【自选模式】", "【闯关模式】"], (error: any, response: SingleColumnMenuResponse) => {
-    if(response.selectedIndex === 0) {
-      terminal.cyan("请选择难度：\n");
-      terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
-        start(response.selectedIndex);
-      });
-    } else {
-      // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
-      terminal.cyan("开发中，敬请期待");
-      process.exit();
-    }
-  });
-
-  
 }
