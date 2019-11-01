@@ -4,27 +4,6 @@ import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
 import { questionGenerator, Question } from "./lib/enquirer";
 import { db } from "./lib/lowdb";
 
-export function start() {
-  terminal.clear();
-
-  terminal.cyan("请选择模式：\n");
-  terminal.singleColumnMenu(["【自选模式】", "【闯关模式】"], (error: any, response: SingleColumnMenuResponse) => {
-    if(response.selectedIndex === 0) {
-      terminal.cyan("请选择难度：\n");
-      terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
-        selectDifficultyLevels(response.selectedIndex).catch((e) => {
-          console.log(e);
-          process.exit();
-        });
-      });
-    } else {
-      // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
-      terminal.cyan("开发中，敬请期待");
-      process.exit();
-    }
-  });
-}
-
 /**
  * 选择题目难度，进入不同难度的答题页
  * @param level 数字 0/1/2，按菜单顺序，0 为简单，1 为普通，2为困难
@@ -37,7 +16,6 @@ export function start() {
   let rawQuestions: Question[] = [];
   
   rawQuestions = JSON.parse(JSON.stringify(db.get("easyqa")
-    // @ts-ignore
     .value()));
 
   const response = await prompt(questionGenerator(rawQuestions));
@@ -70,4 +48,25 @@ export function start() {
   // TODO: 存储统计数据
 
   // db.set("progress.overview", response).write();
+}
+
+export function start() {
+  terminal.clear();
+
+  terminal.cyan("请选择模式：\n");
+  terminal.singleColumnMenu(["【自选模式】", "【闯关模式】"], (error: any, response: SingleColumnMenuResponse) => {
+    if(response.selectedIndex === 0) {
+      terminal.cyan("请选择难度：\n");
+      terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
+        selectDifficultyLevels(response.selectedIndex).catch((e) => {
+          console.log(e);
+          process.exit();
+        });
+      });
+    } else {
+      // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
+      terminal.cyan("开发中，敬请期待");
+      process.exit();
+    }
+  });
 }
