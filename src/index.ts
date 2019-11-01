@@ -26,6 +26,6 @@ terminal.singleColumnMenu(MENU, (error: any, response: SingleColumnMenuResponse)
     case 2: //【关于】
     case 3: //【退出】
     default:
-      process.exit();
+      terminal.processExit(0);
   }
 });

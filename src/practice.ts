@@ -9,7 +9,7 @@ import { random } from "./lib/util";
  * 选择题目难度，进入不同难度的答题页
  * @param level 数字 0/1/2，按菜单顺序，0 为简单，1 为普通，2为困难
  */
- export async function selectDifficultyLevels(level: number) {
+ export async function practice(level: number) {
   terminal.clear();
 
   // TODO: 抽取选择题和填空题，排除已经答过的题目
@@ -22,7 +22,7 @@ import { random } from "./lib/util";
 
   if (rawQuestions.length === 0) {
     terminal.red("读取题库时发生错误");
-    process.exit();
+    terminal.processExit(0);
   }
 
   const response = await prompt(questionGenerator(rawQuestions));
@@ -65,15 +65,15 @@ export function start() {
     if(response.selectedIndex === 0) {
       terminal.cyan("请选择难度：\n");
       terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
-        selectDifficultyLevels(response.selectedIndex).catch((e) => {
+        practice(response.selectedIndex).catch((e) => {
           console.log(e);
-          process.exit();
+          terminal.processExit(0);
         });
       });
     } else {
       // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
       terminal.cyan("开发中，敬请期待");
-      process.exit();
+      terminal.processExit(0);
     }
   });
 }
