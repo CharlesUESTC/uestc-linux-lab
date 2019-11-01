@@ -14,9 +14,13 @@ import { db } from "./lib/lowdb";
   // TODO: 抽取选择题和填空题，排除已经答过的题目
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
   let rawQuestions: Question[] = [];
-  
   rawQuestions = JSON.parse(JSON.stringify(db.get("easyqa")
     .value()));
+
+  if (rawQuestions.length === 0) {
+    terminal.red("读取题库时发生错误");
+    process.exit();
+  }
 
   const response = await prompt(questionGenerator(rawQuestions));
   
@@ -43,7 +47,7 @@ import { db } from "./lib/lowdb";
     console.log(`错题解析：\n`);
     console.log(answers);
   } else {
-    terminal.cyan(`全对啦 👍 继续努力！\n`);
+    terminal.cyan(`全对啦 👍👍👍 继续努力！\n`);
   }
   // TODO: 存储统计数据
 
