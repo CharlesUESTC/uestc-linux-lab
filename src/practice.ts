@@ -3,6 +3,7 @@ import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
 import { questionGenerator, Question } from "./lib/enquirer";
 import { db } from "./lib/lowdb";
+import { random } from "./lib/util";
 
 /**
  * 选择题目难度，进入不同难度的答题页
@@ -14,8 +15,10 @@ import { db } from "./lib/lowdb";
   // TODO: 抽取选择题和填空题，排除已经答过的题目
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
   let rawQuestions: Question[] = [];
-  rawQuestions = JSON.parse(JSON.stringify(db.get("easyqa")
-    .value()));
+
+  rawQuestions = random(db.get("easyselect").value(), 2).concat(
+    random(db.get("easyqa").value(), 8)
+  );
 
   if (rawQuestions.length === 0) {
     terminal.red("读取题库时发生错误");

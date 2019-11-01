@@ -7,12 +7,19 @@ export interface Question {
 /** 读取 json 格式的题库生成 enquirer.js 的 question 数组 */
 export function questionGenerator(rawQuestion: Record<string, any>[]) {
   return rawQuestion.map((v: Question, index: number) => {
-    const ret = {
-      name: String(index),
-      type: "input",
-      message: `${index + 1}.${v.title}`
-    } 
+    if (!v.choices) {
+      return {
+        name: String(index),
+        type: "input",
+        message: `${index + 1}.${v.title}`
+      };
+    }
 
-    return ret;
+    return {
+      name: String(index),
+      type: "select",
+      message: `${index + 1}.${v.title}`,
+      choices: v.choices
+    }
   })
 }

@@ -98,9 +98,24 @@
   ],
   "easyselect": [
     {
-      "title": "",
-      "choices": [],
-      "answer": ""
+      "title": "下列命令中，列出当前目录中所有以't'开头的目录的详细内容的命令是？",
+      "choices": [
+        "ls -l t*",
+        "ls -r t?",
+        "ls -r t*",
+        "ls -l t?"
+      ],
+      "answer": "ls -l t*"
+    },
+    {
+      "title": "下列命令中，删除以 -f 开头的文件的命令是？",
+      "choices": [
+        "rm -- -f*",
+        "rm -- f*",
+        "rm -f f*",
+        "rm -f f?"
+      ],
+      "answer": "rm -- -f*"
     }
   ]
 }
