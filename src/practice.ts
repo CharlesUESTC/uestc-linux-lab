@@ -22,7 +22,7 @@ import { random } from "./lib/util";
 
   if (rawQuestions.length === 0) {
     terminal.red("读取题库时发生错误");
-    terminal.processExit(0);
+    terminal.processExit(-2);
   }
 
   const response = await prompt(questionGenerator(rawQuestions));
@@ -60,20 +60,20 @@ import { random } from "./lib/util";
 export function start() {
   terminal.clear();
 
-  terminal.cyan("请选择模式：\n");
-  terminal.singleColumnMenu(["【自选模式】", "【闯关模式】"], (error: any, response: SingleColumnMenuResponse) => {
+  terminal.cyan("请选择答题模式：\n");
+  terminal.singleColumnMenu(["自选模式（选择题目难度）", "闯关模式（题目难度会逐渐递增）"], (error: any, response: SingleColumnMenuResponse) => {
     if(response.selectedIndex === 0) {
       terminal.cyan("请选择难度：\n");
-      terminal.singleColumnMenu(["【简单】", "【普通】", "【困难】"], (error: any, response: SingleColumnMenuResponse) => {
+      terminal.singleColumnMenu(["easy - 简单", "medium - 普通", "hard - 困难"], (error: any, response: SingleColumnMenuResponse) => {
         practice(response.selectedIndex).catch((e) => {
           console.log(e);
-          terminal.processExit(0);
+          terminal.processExit(-3);
         });
       });
     } else {
       // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
       terminal.cyan("开发中，敬请期待");
-      terminal.processExit(0);
+      terminal.processExit(-4);
     }
   });
 }
