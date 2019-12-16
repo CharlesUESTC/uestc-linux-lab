@@ -1,9 +1,10 @@
 {
   "name": "linux-lab",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "linux-lab help you practise linux commands via a set of exercises.",
   "main": "index.js",
   "scripts": {
+    "precommit": "npm run test && npm run build",
     "start": "npm run build && node dist/index.js",
     "build": "npm run lint && npm run build:src",
     "build:src": "tsc -p .",
@@ -22,6 +23,7 @@
     "terminal-kit": "^1.31.4"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.6",
     "@types/chalk": "^2.2.0",
     "@types/clear": "^0.1.0",
     "@types/figlet": "^1.2.0",
@@ -29,6 +31,7 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.5",
     "@types/terminal-kit": "^1.28.0",
+    "chai": "^4.2.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.6.0",
     "espower-typescript": "^9.0.2",
