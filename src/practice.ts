@@ -16,8 +16,8 @@ import { random } from "./lib/util";
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
   let rawQuestions: Question[] = [];
 
-  rawQuestions = random(db.get("easyselect").value(), 2).concat(
-    random(db.get("easyqa").value(), 8)
+  rawQuestions = random(db.get("select").value(), 2).concat(
+    random(db.get("qa").value(), 8)
   );
 
   if (rawQuestions.length === 0) {
@@ -41,6 +41,7 @@ import { random } from "./lib/util";
   // 打印成绩单
   terminal.clear();
 
+  // TODO: render(<Report >)
   terminal.cyan(`本次成绩: ${userAnswers.length - result.mistakes.length}/${userAnswers.length}\n`);
   if (result.mistakes.length > 0) {
     const answers = result.mistakes
@@ -62,6 +63,7 @@ export function start() {
 
   terminal.cyan("请选择答题模式：\n");
   terminal.singleColumnMenu(["自选模式（选择题目难度）", "闯关模式（题目难度会逐渐递增）"], (error: any, response: SingleColumnMenuResponse) => {
+    // 自选模式
     if(response.selectedIndex === 0) {
       terminal.cyan("请选择难度：\n");
       terminal.singleColumnMenu(["easy - 简单", "medium - 普通", "hard - 困难"], (error: any, response: SingleColumnMenuResponse) => {
@@ -71,6 +73,7 @@ export function start() {
         });
       });
     } else {
+    // 闯关模式
       // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
       terminal.cyan("开发中，敬请期待");
       terminal.processExit(-4);
