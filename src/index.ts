@@ -6,7 +6,7 @@ import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
 import { start } from "./practice";
 
 const MENU = [
-  "                    答题                    ",
+  "                    开始答题                    ",
   "                    查看统计                    ",
   "                      关于                      ",
   "                      退出                      "
