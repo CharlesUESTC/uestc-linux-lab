@@ -31,6 +31,11 @@ linux-lab
 首先安装 Node.js 环境
 
 ```bash
+# 安装项目依赖
+npm install
+```
+
+```bash
 # 本地开发测试
 npm start
 # 编译
