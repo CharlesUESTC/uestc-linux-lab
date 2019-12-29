@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "precommit": "npm run test && npm run build",
-    "start": "rm -r dist && npm run build && node dist/src/index.js",
-    "build": "npm run lint && npm run build:src && cp db.json dist",
+    "start": "shx rm -r dist && npm run build && node dist/src/index.js",
+    "build": "npm run lint && npm run build:src && shx cp db.json dist",
     "build:src": "tsc -p .",
     "prepublishOnly": "npm run build",
     "lint": "eslint \"src/**/*\"",
@@ -36,6 +36,7 @@
     "eslint": "^6.6.0",
     "espower-typescript": "^9.0.2",
     "mocha": "^6.2.2",
+    "shx": "^0.3.2",
     "typescript": "^3.6.4"
   },
   "files": [
