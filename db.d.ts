@@ -72,7 +72,7 @@ export let db: {
   };
   // 个人信息
   profiles: {
-    [name: string]: UserProfile;
+    [username: string]: UserProfile;
   };
   easyqa: QuestionAndAnswer[];
   mediumqa: QuestionAndAnswer[];

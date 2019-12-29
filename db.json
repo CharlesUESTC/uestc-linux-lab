@@ -177,5 +177,7 @@
       "answer": "rm -- -f*",
       "category": ""
     }
-  ]
+  ],
+  "mediumselect": [],
+  "hardselect": []
 }

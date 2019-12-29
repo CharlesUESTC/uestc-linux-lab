@@ -4,8 +4,17 @@ import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
 import { questionGenerator, Question } from "../lib/enquirer";
 import { db } from "../lib/lowdb";
 import { random } from "../lib/util";
+import { dataView } from "./data";
+import { aboutView } from "./about";
 
-const levelArray = ["easy", "medium", "hard"];
+const LEVEL_ARRAY = ["easy", "medium", "hard"];
+
+const LOGGED_MENU = [
+  "                    开始答题                    ",
+  "                    查看统计                    ",
+  "                      关于                      ",
+  "                      退出                      "
+];
 
 /**
  * 选择题目难度，进入不同难度的答题页
@@ -18,8 +27,8 @@ const levelArray = ["easy", "medium", "hard"];
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
   let rawQuestions: Question[] = [];
 
-  rawQuestions = random(db.get(`${levelArray[level]}select`).value(), 2)
-    .concat(random(db.get(`${levelArray[level]}qa`).value(), 8)
+  rawQuestions = random(db.get(`${LEVEL_ARRAY[level]}select`).value(), 2)
+    .concat(random(db.get(`${LEVEL_ARRAY[level]}qa`).value(), 8)
   );
 
   if (!rawQuestions) {
@@ -61,9 +70,7 @@ const levelArray = ["easy", "medium", "hard"];
   terminal.processExit(0)
 }
 
-export function practiceView() {
-  terminal.clear();
-
+function start(username: string) {
   terminal.cyan("请选择答题模式：\n");
   terminal.singleColumnMenu(["自选模式（选择题目难度）", "闯关模式（题目难度会逐渐递增）"], (error: any, response: SingleColumnMenuResponse) => {
     // 自选模式
@@ -80,6 +87,28 @@ export function practiceView() {
       // TODO: 在自动难度模式下系统在用户连续答对或答错指定数量的题目后自动增加难度或降低难度。
       terminal.cyan("开发中，敬请期待");
       terminal.processExit(-4);
+    }
+  });
+}
+
+export function practiceView(username: string) {
+  terminal.clear();
+
+  terminal.singleColumnMenu(LOGGED_MENU, (error: any, response: SingleColumnMenuResponse) => {
+    if (error) {
+      console.log(error);
+      terminal.processExit(-1);
+    }
+    switch (response.selectedIndex) {
+      case 0: //【开始答题】
+        start(username);
+        break;
+      case 1: //【查看统计】
+        dataView(username);
+        break;
+      case 2: //【退出】
+      default:
+        terminal.processExit(0);
     }
   });
 }
