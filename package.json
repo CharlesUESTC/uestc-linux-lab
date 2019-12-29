@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "precommit": "npm run test && npm run build",
-    "start": "npm run build && node dist/src/index.js",
-    "build": "npm run lint && npm run build:src",
+    "start": "rm -r dist && npm run build && node dist/src/index.js",
+    "build": "npm run lint && npm run build:src && cp db.json dist",
     "build:src": "tsc -p .",
     "prepublishOnly": "npm run build",
     "lint": "eslint \"src/**/*\"",
