@@ -4,11 +4,10 @@
   "description": "linux-lab help you practise linux commands via a set of exercises.",
   "main": "index.js",
   "scripts": {
-    "precommit": "npm run test && npm run build",
     "start": "shx rm -r dist && npm run build && node dist/src/index.js",
     "build": "npm run lint && npm run build:src && shx cp db.json dist",
     "build:src": "tsc -p .",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm test && npm run build",
     "lint": "eslint \"src/**/*\"",
     "test": "cross-env NODE_ENV=test mocha -r espower-typescript/guess test/**/*.spec.ts"
   },
