@@ -25,11 +25,11 @@ export function homeView() {
       terminal.processExit(-1);
     }
     switch (response.selectedIndex) {
-      case 0: //【注册】
-        signUpView();
-        break;
-      case 1: //【登录】
+      case 0: //【登录】
         logInView();
+        break;
+      case 1: //【注册】
+        signUpView();
         break;
       case 2: //【关于】
         aboutView();
