@@ -6,8 +6,8 @@ import { signUpView } from "./signUp";
 import { logInView } from "./login";
 
 const SIGNUP_MENU = [
-  "                      注册                      ",
   "                      登录                      ",
+  "                      注册                      ",
   "                      关于                      ",
   "                      退出                      "
 ];
