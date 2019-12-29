@@ -4,6 +4,7 @@ export interface Question {
   answer: string;
 }
 
+// TODO: name: String(index) => name: String(question.id)
 /** 读取 json 格式的题库生成 enquirer.js 的 question 数组 */
 export function questionGenerator(rawQuestion: Record<string, any>[]) {
   return rawQuestion.map((v: Question, index: number) => {
