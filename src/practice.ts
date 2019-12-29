@@ -26,6 +26,7 @@ import { random } from "./lib/util";
   }
 
   const response = await prompt(questionGenerator(rawQuestions));
+  terminal.cyan(JSON.stringify(response));
   
   // 错题统计
   const userAnswers = Object.values(response);
@@ -54,7 +55,6 @@ import { random } from "./lib/util";
     terminal.cyan(`全对啦 👍👍👍 继续努力！\n`);
   }
   // TODO: 存储统计数据
-
   // db.set("progress.overview", response).write();
 }
 

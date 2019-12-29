@@ -6,5 +6,5 @@ const adapter = new FileSync(path.resolve(__dirname, '../../db.json'));
 export const db = low(adapter);
 
 // Set some defaults (required if your JSON file is empty)
-db.defaults({ progress: {}, qa: [], select: [] })
+db.defaults({ overview: {}, profiles: [], qa: [], select: [] })
   .write();

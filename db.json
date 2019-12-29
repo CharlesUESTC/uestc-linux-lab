@@ -1,111 +1,125 @@
 {
-  "progress": {
-    "overview": {}
+  "overview": {
+    "total": 90,
+    "Filesystem": 0,
+    "Processes": 0,
+    "Network": 0,
+    "Misc": 0,
+    "TextProcessing": 0,
+    "System": 0,
+    "Shell": 0,
+    "Others": 90
   },
-  "qa": [
+  "profiles": {},
+  "easyqa": [
     {
-      "title": "输入一个命令，把上个命令的参数作为cd参数使用",
-      "answer": "cd !$",
-      "category": ""
+    "difficulty": "easy",
+    "title": "输入一个命令，进入上一次工作路径：",
+    "answer": "cd -",
+    "category": ""
     },
     {
-      "title": "输入一个命令，进入上一次工作路径：",
-      "answer": "cd -",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，进入 \"home\" 目录：",
-      "answer": "cd ~",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，按大小反序显示文件详细信息：",
-      "answer": "ls -lrS",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，按易读方式按时间反序排序，并显示文件详细信息：",
-      "answer": "ls -lhrt",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，列出当前目录中所有以't'开头的目录的详细内容",
-      "answer": "ls -l t*",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，列出文件绝对路径（不包含隐藏文件）：",
-      "answer": "ls | sed \"s:^:`pwd`/:\"",
-      "category": ""
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，以查看当前路径：",
       "answer": "pwd",
       "category": ""
     },
     {
+      "difficulty": "easy",
+      "title": "输入一个命令，进入 \"home\" 目录：",
+      "answer": "cd ~",
+      "category": ""
+    },
+    {
+      "difficulty": "easy",
       "title": "输入一个命令，在当前工作目录下创建名为 test 的文件夹：",
       "answer": "mkdir test",
       "category": ""
     },
     {
-      "title": "输入一个命令，一次在 tmp 目录下创建路径为 test/t1/t 的文件夹（即使路径中的某些目录尚不存在）：",
-      "answer": "mkdir -p /tmp/test/t1/t",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，删除任何 .log 文件，且删除前逐一询问确认：",
-      "answer": "rm -i *.log",
-      "category": ""
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，删除 test 子目录及子目录中所有档案删除，并且不用一一确认：",
       "answer": "rm -rf test",
       "category": ""
     },
     {
-      "title": "输入一个命令，删除以 -f 开头的文件",
-      "answer": "rm -- -f*",
-      "category": ""
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，将文件 test.log 重命名为 test1.txt：",
       "answer": "mv test.log test1.txt",
       "category": ""
     },
     {
-      "title": "输入一个命令，将文件 log1.txt,log2.txt,log3.txt 移动到根的 test3 目录中：",
-      "answer": "mv llog1.txt log2.txt log3.txt /test3",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖：",
-      "answer": "mv -i log1.txt log2.txt",
-      "category": ""
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，移动当前文件夹下的所有文件到上一级目录：",
       "answer": "mv * ../",
       "category": ""
     },
     {
+      "difficulty": "easy",
+      "title": "输入一个命令，显示 1.log 文件中前 20 行：",
+      "answer": "head 1.log -n 20",
+      "category": ""
+    }
+  ],
+  "mediumqa": [
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，把上个命令的参数作为cd参数使用",
+      "answer": "cd !$",
+      "category": ""
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，按大小反序显示文件详细信息：",
+      "answer": "ls -lrS",
+      "category": ""
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，列出当前目录中所有以't'开头的目录的详细内容",
+      "answer": "ls -l t*",
+      "category": ""
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，一次在 tmp 目录下创建路径为 test/t1/t 的文件夹（即使路径中的某些目录尚不存在）：",
+      "answer": "mkdir -p /tmp/test/t1/t",
+      "category": ""
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，删除任何 .log 文件，且删除前逐一询问确认：",
+      "answer": "rm -i *.log",
+      "category": ""
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，将文件 log1.txt,log2.txt,log3.txt 移动到根的 test3 目录中：",
+      "answer": "mv llog1.txt log2.txt log3.txt /test3",
+      "category": ""
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖：",
+      "answer": "mv -i log1.txt log2.txt",
+      "category": ""
+    },
+    {
+      "difficulty": "medium",
       "title": "输入一个 cp 开头的命令，复制 a.txt 到 test 目录下，保持原文件时间，如果原文件存在提示是否覆盖：",
       "answer": "cp -ai a.txt test",
       "category": ""
     },
     {
+      "difficulty": "medium",
       "title": "使用 cat 命令，把 log2018.log 的文件内容加上行号后输入 log2019.log 这个文件里：",
       "answer": "cat -n log2018.log log2019.log",
       "category": ""
     },
     {
+      "difficulty": "medium",
       "title": "使用 cat 命令，把 log2018.log 和 log2019.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里：",
       "answer": "cat -b log2018.log log2019.log log.log",
-      "category": ""
-    },
-    {
-      "title": "输入一个命令，显示 1.log 文件中前 20 行：",
-      "answer": "head 1.log -n 20",
       "category": ""
     },
     {
@@ -114,12 +128,33 @@
       "category": ""
     },
     {
+      "difficulty": "medium",
       "title": "输入一个命令，显示 t.log最后 10 行：",
       "answer": "head -n -10 t.log",
       "category": ""
     }
   ],
-  "select": [
+  "hardqa": [
+    {
+    "difficulty": "hard",
+    "title": "输入一个命令，按易读方式按时间反序排序，并显示文件详细信息：",
+    "answer": "ls -lhrt",
+    "category": ""
+    },
+    {
+      "difficulty": "hard",
+      "title": "输入一个命令，列出文件绝对路径（不包含隐藏文件）：",
+      "answer": "ls | sed \"s:^:`pwd`/:\"",
+      "category": ""
+    },
+    {
+      "difficulty": "hard",
+      "title": "输入一个命令，删除以 -f 开头的文件",
+      "answer": "rm -- -f*",
+      "category": ""
+    }
+  ],
+  "easyselect": [
     {
       "title": "下列命令中，列出当前目录中所有以't'开头的目录的详细内容的命令是？",
       "choices": [
@@ -142,7 +177,5 @@
       "answer": "rm -- -f*",
       "category": ""
     }
-  ],
-  "easyqa": [],
-  "easyselect": []
+  ]
 }
