@@ -5,6 +5,8 @@ import { questionGenerator, Question } from "./lib/enquirer";
 import { db } from "./lib/lowdb";
 import { random } from "./lib/util";
 
+const levelArray = ["easy", "medium", "hard"];
+
 /**
  * 选择题目难度，进入不同难度的答题页
  * @param level 数字 0/1/2，按菜单顺序，0 为简单，1 为普通，2为困难
@@ -16,11 +18,11 @@ import { random } from "./lib/util";
   // 对查询到的结果进行一次深拷贝，防止被 enquirer.prompt 更改后写入DB
   let rawQuestions: Question[] = [];
 
-  rawQuestions = random(db.get("select").value(), 2).concat(
-    random(db.get("qa").value(), 8)
+  rawQuestions = random(db.get(`${levelArray[level]}select`).value(), 2)
+    .concat(random(db.get(`${levelArray[level]}qa`).value(), 8)
   );
 
-  if (rawQuestions.length === 0) {
+  if (!rawQuestions) {
     terminal.red("读取题库时发生错误");
     terminal.processExit(-2);
   }
@@ -56,6 +58,7 @@ import { random } from "./lib/util";
   }
   // TODO: 存储统计数据
   // db.set("progress.overview", response).write();
+  terminal.processExit(0)
 }
 
 export function start() {

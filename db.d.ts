@@ -10,6 +10,8 @@ export enum CommendCategory {
 }
 
 export interface Select {
+  /** 题号 */
+  id: number;
   /** 难度 */
   difficulty?: "easy" | "medium" | "hard";
   /** 题干 */
@@ -23,6 +25,8 @@ export interface Select {
 }
 
 export interface QuestionAndAnswer {
+  /** 题号 */
+  id: number;
   /** 难度 */
   difficulty?: "easy" | "medium" | "hard";
   /** 题干 */

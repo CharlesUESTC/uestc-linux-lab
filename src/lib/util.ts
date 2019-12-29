@@ -2,6 +2,10 @@ import { isNumber } from "util";
 
 /** 从 数组中随机选取 n 个元素 */
 export function random(arr: any[], n: number) {
+  if (!arr) {
+    return [];
+  }
+
   const result = [];
   let m = arr.length;
   if (n > arr.length) {
@@ -9,7 +13,7 @@ export function random(arr: any[], n: number) {
   }
 
   if (!isNumber(n) || n < 0) {
-    return null;
+    return [];
   }
 
   let t;
