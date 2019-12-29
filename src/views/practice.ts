@@ -1,3 +1,4 @@
+import figlet from "figlet";
 import { prompt } from "enquirer";
 import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
@@ -5,7 +6,6 @@ import { questionGenerator, Question } from "../lib/enquirer";
 import { db } from "../lib/lowdb";
 import { random } from "../lib/util";
 import { dataView } from "./data";
-import { aboutView } from "./about";
 
 const LEVEL_ARRAY = ["easy", "medium", "hard"];
 
@@ -93,6 +93,8 @@ function start(username: string) {
 
 export function practiceView(username: string) {
   terminal.clear();
+
+  terminal(figlet.textSync(`Hi! ${username}`, { horizontalLayout: "default" }))
 
   terminal.singleColumnMenu(LOGGED_MENU, (error: any, response: SingleColumnMenuResponse) => {
     if (error) {

@@ -10,7 +10,22 @@
     "Shell": 0,
     "Others": 90
   },
-  "profiles": {},
+  "profiles": {
+    "default": {
+      "solved": 0,
+      "correctRate": 0,
+      "details": {
+        "Filesystem": 0,
+        "Processes": 0,
+        "Network": 0,
+        "Misc": 0,
+        "TextProcessing": 0,
+        "System": 0,
+        "Shell": 0,
+        "Others": 0
+      }
+    }
+  },
   "easyqa": [
     {
     "difficulty": "easy",
