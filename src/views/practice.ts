@@ -6,6 +6,7 @@ import { questionGenerator, Question } from "../lib/enquirer";
 import { db } from "../lib/lowdb";
 import { random } from "../lib/util";
 import { dataView } from "./data";
+import { UserProfile } from "../../db";
 
 /** enquirer.prompt 的返回值 */
 export interface PromptRes {
@@ -20,6 +21,7 @@ export interface MistakeInfo {
   answer: string;
 }
 
+/** 判题结果 */
 export interface JudgeResult {
   /** 完成题目数 */
   total: number;
@@ -65,7 +67,9 @@ function judge(rawQuestions: Question[], response: PromptRes) {
     mistakes: [] as MistakeInfo[]
   };
   rawQuestions.forEach((rawQuestion: Question, index: number) => {
-    if (rawQuestion.answer !== userAnswers[index]) {
+    if (rawQuestion.answer === userAnswers[index]) {
+      result.solved += 1;
+    } else {
       result.mistakes.push({ index, answer: rawQuestion.answer });
     }
   });
@@ -73,6 +77,7 @@ function judge(rawQuestions: Question[], response: PromptRes) {
   return result;
 }
 
+/** 将判题结果输出 */
 function printResult(result: JudgeResult) {
   terminal.cyan(`本次成绩: ${result.solved}/${result.total}\n`);
   if (result.mistakes.length > 0) {
@@ -86,6 +91,17 @@ function printResult(result: JudgeResult) {
     terminal.cyan(`全对啦 👍👍👍 继续努力！\n`);
   }
 }
+
+/** 将判题结果保存到 db.json */
+function saveResult(username: string, result: JudgeResult) {
+  db.update(`profiles.${username}`, (userProfile: UserProfile) => {
+    userProfile.solved += result.solved;
+    userProfile.times += 1;
+    userProfile.correctRate = userProfile.solved / (userProfile.times * result.total);
+    return userProfile;
+  }).write();
+}
+
 /**
  * 选择题目难度，进入不同难度的答题页
  * @param level 数字 0/1/2，按菜单顺序，0 为简单，1 为普通，2为困难
@@ -104,6 +120,8 @@ export async function practice(username: string, level: number) {
   printResult(result);
 
   // TODO: 存储统计数据
+  saveResult(username, result);
+
   // db.set("overview", response).write();
   terminal.processExit(0)
 }

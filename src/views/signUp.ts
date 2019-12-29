@@ -12,6 +12,7 @@ export async function signUpView() {
   db.set(`profiles.${input}`, {
     solved: 0,
     correctRate: 0,
+    times: 0,
     details: {
       Filesystem: 0,
       Processes: 0,

@@ -40,6 +40,8 @@ export interface QuestionAndAnswer {
 export interface UserProfile {
   // 已解决的题目数
   solved: number;
+  // 做题次数
+  times: number;
   // 准确率(0-100)
   correctRate: number;
   // 分类答题情况
