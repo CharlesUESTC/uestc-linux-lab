@@ -3,7 +3,9 @@
 import figlet from "figlet";
 import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
-import { start } from "./practice";
+import { practiceView } from "./views/practice";
+import { dataView } from "./views/data";
+import { aboutView } from "./views/about";
 
 const MENU = [
   "                    开始答题                    ",
@@ -33,10 +35,13 @@ terminal.singleColumnMenu(MENU, (error: any, response: SingleColumnMenuResponse)
   }
   switch (response.selectedIndex) {
     case 0: //【开始答题】
-      start();
+      practiceView();
       break;
     case 1: //【查看统计】
+      dataView();
+      break;
     case 2: //【关于】
+      aboutView();
     case 3: //【退出】
     default:
       terminal.processExit(0);

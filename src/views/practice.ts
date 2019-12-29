@@ -1,9 +1,9 @@
 import { prompt } from "enquirer";
 import { terminal } from "terminal-kit";
 import { SingleColumnMenuResponse } from "terminal-kit/Terminal";
-import { questionGenerator, Question } from "./lib/enquirer";
-import { db } from "./lib/lowdb";
-import { random } from "./lib/util";
+import { questionGenerator, Question } from "../lib/enquirer";
+import { db } from "../lib/lowdb";
+import { random } from "../lib/util";
 
 const levelArray = ["easy", "medium", "hard"];
 
@@ -61,7 +61,7 @@ const levelArray = ["easy", "medium", "hard"];
   terminal.processExit(0)
 }
 
-export function start() {
+export function practiceView() {
   terminal.clear();
 
   terminal.cyan("请选择答题模式：\n");
