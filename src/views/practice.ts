@@ -15,7 +15,7 @@ export interface PromptRes {
 /** 错题信息 */
 export interface MistakeInfo {
   /** 题号 */
-  index: string;
+  index: number;
   /** 正确答案 */
   answer: string;
 }
@@ -66,7 +66,7 @@ function judge(rawQuestions: Question[], response: PromptRes) {
   };
   rawQuestions.forEach((rawQuestion: Question, index: number) => {
     if (rawQuestion.answer !== userAnswers[index]) {
-      result.mistakes.push({ index: String(index), answer: rawQuestion.answer });
+      result.mistakes.push({ index, answer: rawQuestion.answer });
     }
   });
 
