@@ -95,7 +95,7 @@ function saveResult(username: string, result: JudgeResult) {
   db.update(`profiles.${username}`, (userProfile: UserProfile) => {
     userProfile.solved += result.solved;
     userProfile.times += 1;
-    userProfile.correctRate = userProfile.solved / (userProfile.times * result.total);
+    userProfile.correctRate = userProfile.solved / (userProfile.times * result.total) * 100;
     return userProfile;
   }).write();
 }

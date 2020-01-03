@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { random, similarCommand } from "../src/lib/util";
+import { random } from "../src/lib/util";
 
 describe("random", () => {
   it("should return [] if array is empty", () => {
@@ -20,12 +20,5 @@ describe("random", () => {
   it("should return an array which length == n", () => {
     const array = [1, 2, 3, 4, 5];
     expect(random(array, 3).length).to.be.eql(3);
-  });
-});
-
-
-describe("bash command understand", () => {
-  it("should equal", () => {
-    expect(similarCommand("rm -rf", "rm -fr")).to.be.true;
   });
 });

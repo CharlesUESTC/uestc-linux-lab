@@ -1,4 +1,7 @@
 declare module "bash-parser" {
-  function parse(command: string): any;
-  export = parse;
+  export interface Suffix {
+    type: string;
+    text: string;
+  }
+  export default function parse(command: string): any;
 }
