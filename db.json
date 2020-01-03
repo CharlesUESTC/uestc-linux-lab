@@ -1,99 +1,372 @@
 {
-  "progress": {
-    "overview": {}
+  "overview": {
+    "total": 90,
+    "Filesystem": 0,
+    "Processes": 0,
+    "Network": 0,
+    "Misc": 0,
+    "TextProcessing": 0,
+    "System": 0,
+    "Shell": 0,
+    "Others": 90
+  },
+  "profiles": {
+    "default": {
+      "solved": 0,
+      "correctRate": 0,
+      "times": 0,
+      "details": {
+        "Filesystem": 0,
+        "Processes": 0,
+        "Network": 0,
+        "Misc": 0,
+        "TextProcessing": 0,
+        "System": 0,
+        "Shell": 0,
+        "Others": 0
+      }
+    }
   },
   "easyqa": [
     {
-      "title": "输入一个命令，把上个命令的参数作为cd参数使用",
-      "answer": "cd !$"
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，进入上一次工作路径：",
-      "answer": "cd -"
+      "answer": "cd -",
+      "category": "Filesystem"
     },
     {
-      "title": "输入一个命令，进入 \"home\" 目录：",
-      "answer": "cd ~"
-    },
-    {
-      "title": "输入一个命令，按大小反序显示文件详细信息：",
-      "answer": "ls -lrS"
-    },
-    {
-      "title": "输入一个命令，按易读方式按时间反序排序，并显示文件详细信息：",
-      "answer": "ls -lhrt"
-    },
-    {
-      "title": "输入一个命令，列出当前目录中所有以't'开头的目录的详细内容",
-      "answer": "ls -l t*"
-    },
-    {
-      "title": "输入一个命令，列出文件绝对路径（不包含隐藏文件）：",
-      "answer": "ls | sed \"s:^:`pwd`/:\""
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，以查看当前路径：",
-      "answer": "pwd"
+      "answer": "pwd",
+      "category": "Filesystem"
     },
     {
+      "difficulty": "easy",
+      "title": "输入一个命令，进入 \"home\" 目录：",
+      "answer": "cd ~",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "easy",
       "title": "输入一个命令，在当前工作目录下创建名为 test 的文件夹：",
-      "answer": "mkdir test"
+      "answer": "mkdir test",
+      "category": "Filesystem"
     },
     {
-      "title": "输入一个命令，一次在 tmp 目录下创建路径为 test/t1/t 的文件夹（即使路径中的某些目录尚不存在）：",
-      "answer": "mkdir -p /tmp/test/t1/t"
-    },
-    {
-      "title": "输入一个命令，删除任何 .log 文件，且删除前逐一询问确认：",
-      "answer": "rm -i *.log"
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，删除 test 子目录及子目录中所有档案删除，并且不用一一确认：",
-      "answer": "rm -rf test"
+      "answer": "rm -rf test",
+      "category": "Filesystem"
     },
     {
-      "title": "输入一个命令，删除以 -f 开头的文件",
-      "answer": "rm -- -f*"
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，将文件 test.log 重命名为 test1.txt：",
-      "answer": "mv test.log test1.txt"
+      "answer": "mv test.log test1.txt",
+      "category": "Filesystem"
     },
     {
-      "title": "输入一个命令，将文件 log1.txt,log2.txt,log3.txt 移动到根的 test3 目录中：",
-      "answer": "mv llog1.txt log2.txt log3.txt /test3"
-    },
-    {
-      "title": "输入一个命令，将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖：",
-      "answer": "mv -i log1.txt log2.txt"
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，移动当前文件夹下的所有文件到上一级目录：",
-      "answer": "mv * ../"
+      "answer": "mv * ../",
+      "category": "Filesystem"
     },
     {
-      "title": "输入一个 cp 开头的命令，复制 a.txt 到 test 目录下，保持原文件时间，如果原文件存在提示是否覆盖：",
-      "answer": "cp -ai a.txt test"
-    },
-    {
-      "title": "使用 cat 命令，把 log2018.log 的文件内容加上行号后输入 log2019.log 这个文件里：",
-      "answer": "cat -n log2018.log log2019.log"
-    },
-    {
-      "title": "使用 cat 命令，把 log2018.log 和 log2019.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里：",
-      "answer": "cat -b log2018.log log2019.log log.log"
-    },
-    {
+      "difficulty": "easy",
       "title": "输入一个命令，显示 1.log 文件中前 20 行：",
-      "answer": "head 1.log -n 20"
+      "answer": "head 1.log -n 20",
+      "category": "Filesystem"
     },
     {
+      "difficulty": "easy",
+      "title": "逐页显示 testfile 文档内容，如有连续两行以上空白行则以一行空白行显示：",
+      "answer": "more -s testfile",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "easy",
+      "title": "清空 /etc/test.txt 文档内容：",
+      "answer": "cat /dev/null > /etc/test.txt",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "easy",
+      "title": "将目前目录及其子目录下所有扩展名是 c 的文件列出来",
+      "answer": "find . -name \"*.c\"",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "easy",
+      "title": "将文件 file1.txt 的拥有者设为 user，所属用户组设为 usergroup ：",
+      "answer": "chown user:usergroup file1.txt",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "easy",
+      "title": "将 ex1.py 设定为只有该文件拥有者可以执行：",
+      "answer": "chmod u+x ex1.py",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "easy",
+      "title": "在当前目录中，查找后缀有 file 的文件中包含 test 字符串的文件，并打印该字符串的行：",
+      "answer": "grep test *file",
+      "category": "Misc"
+    },
+    {
+      "difficulty": "easy",
+      "title": "为logfile.log文件创建软链接linkfile：",
+      "answer": "ln -s logfile.log linkfile",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "easy",
+      "title": "显示到达主机地址211.151.111.30的数据包路由：",
+      "answer": "traceroute 211.151.111.30",
+      "category": "Network"
+    },
+    {
+      "difficulty": "easy",
+      "title": "检测与主机114.80.174.110是否连通：",
+      "answer": "ping 114.80.174.110",
+      "category": "Network"
+    },
+    {
+      "difficulty": "easy",
+      "title": "显示当前所有网络设备：",
+      "answer": "ifconfig -a",
+      "category": "Network"
+    },
+    {
+      "difficulty": "easy",
+      "title": "列出所有tcp端口：",
+      "answer": "netstat -at",
+      "category": "Network"
+    },
+    {
+      "difficulty": "easy",
+      "title": "显示当前路由（直接显示数字形式的IP地址）：",
+      "answer": "route -n",
+      "category": "Network"
+    },
+    {
+      "difficulty": "easy",
+      "title": "显示当前登录系统的用户的命令是？",
+      "answer": "who",
+      "category": "System"
+    },
+    {
+      "difficulty": "easy",
+      "title": "显示当前登录系统的用户，并显示标题信息：",
+      "answer": "who -H",
+      "category": "System"
+    }
+  ],
+  "mediumqa": [
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，把上个命令的参数作为cd参数使用",
+      "answer": "cd !$",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，按大小反序显示文件详细信息：",
+      "answer": "ls -lrS",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，列出当前目录中所有以't'开头的目录的详细内容",
+      "answer": "ls -l t*",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，一次在 tmp 目录下创建路径为 test/t1/t 的文件夹（即使路径中的某些目录尚不存在）：",
+      "answer": "mkdir -p /tmp/test/t1/t",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，删除任何 .log 文件，且删除前逐一询问确认：",
+      "answer": "rm -i *.log",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，将文件 log1.txt,log2.txt,log3.txt 移动到根的 test3 目录中：",
+      "answer": "mv llog1.txt log2.txt log3.txt /test3",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个命令，将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖：",
+      "answer": "mv -i log1.txt log2.txt",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "输入一个 cp 开头的命令，复制 a.txt 到 test 目录下，保持原文件时间，如果原文件存在提示是否覆盖：",
+      "answer": "cp -ai a.txt test",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "使用 cat 命令，把 log2018.log 的文件内容加上行号后输入 log2019.log 这个文件里：",
+      "answer": "cat -n log2018.log > log2019.log",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "使用 cat 命令，把 log2018.log 和 log2019.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里：",
+      "answer": "cat -b log2018.log log2019.log >> log.log",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
       "title": "输入一个命令，显示 1.log 文件前 20 字节：",
-      "answer": "head -c 20 log2014.log"
+      "answer": "head -c 20 1.log",
+      "category": "Filesystem"
     },
     {
-      "title": "输入一个命令，显示 t.log最后 10 行：",
-      "answer": "head -n -10 t.log"
+      "difficulty": "medium",
+      "title": "输入一个命令，显示 t.log 最后 10 行：",
+      "answer": "tail -n 10 t.log",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "从第 20 行开始显示 testfile 之文档内容：",
+      "answer": "more +20 testfile",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "把 textfile1 的文档内容加上行号后输入 textfile2 这个文档里，在每行结束处显示 $：",
+      "answer": "cat -E textfile1 > textfile2",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "将目前目录及其子目录下所有最近 20 天内更新过的文件列出：",
+      "answer": "find . -ctime -20",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "在名为mailroom的打印机上打印report文件（使用lpr命令）：",
+      "answer": "lpr -P mailroom report",
+      "category": "TextProcessing"
+    },
+    {
+      "difficulty": "medium",
+      "title": "关闭网卡eth0：",
+      "answer": "ifconfig eth0 down",
+      "category": "Network"
+    },
+    {
+      "difficulty": "medium",
+      "title": "在目录/usr下建立子目录test，并且只有文件主有读、写和执行权限，其他人无权访问：",
+      "answer": "mkdir -m 700 /usr/test",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "medium",
+      "title": "将目录/usr/men下的所有文件及其子目录复制到目录/usr/zh中：",
+      "answer": "cp -r /usr/men /usr/zh",
+      "category": "Filesystem"
+    }
+  ],
+  "hardqa": [
+    {
+      "difficulty": "hard",
+      "title": "输入一个命令，按易读方式按时间反序排序，并显示文件详细信息：",
+      "answer": "ls -lhrt",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "输入一个命令，列出文件绝对路径（不包含隐藏文件）：",
+      "answer": "ls | sed \"s:^:`pwd`/:\"",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "输入一个命令，删除以 -f 开头的文件",
+      "answer": "rm -- -f*",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "查找/var/log目录中更改时间在7日以前的普通文件，并在删除之前询问它们：",
+      "answer": "find /var/log -type f -mtime +7 -ok rm {} \\",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "查找系统中所有文件长度为0的普通文件，并列出它们的完整路径：",
+      "answer": "find / -type f -size 0 -exec ls -l {} \\",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "将文件 file1.txt 与 file2.txt 设为该文件拥有者及其同一用户组者可写入，但其他以外的人则不可写入：",
+      "answer": "chmod ug+w,o-w file1.txt file2.txt",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "将 /dev/hda1 用只读模式挂在 /mnt 之下：",
+      "answer": "mount -o ro /dev/hda1 /mnt",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "在打印机foo上使用文件的一个副本打印/etc/motd文件的30份，并且要用邮件通知用户作业完成（使用lp命令）：",
+      "answer": "lp -c -m -n 30 -d foo /etc/motd",
+      "category": "TextProcessing"
+    },
+    {
+      "difficulty": "hard",
+      "title": "检测与主机114.80.174.110是否连通，收到两次包后自动退出：",
+      "answer": "ping -c 2 114.80.174.110",
+      "category": "Network"
+    },
+    {
+      "difficulty": "hard",
+      "title": "给eth0网卡配置IP地址192.168.1.56，并设置子网掩码255.255.255.0：",
+      "answer": "ifconfig eth0 192.168.1.56 netmask 255.255.255.0",
+      "category": "Network"
+    },
+    {
+      "difficulty": "hard",
+      "title": "设置网卡eth0能通过的最大数据包大小为 1500 bytes：",
+      "answer": "ping eth0 mtu 1500",
+      "category": "Network"
+    },
+    {
+      "difficulty": "hard",
+      "title": "找出运行在80端口的进程（提示：参数为-ap，并使用grep）：",
+      "answer": "netstat -ap | grep ':80'",
+      "category": "Network"
+    },
+    {
+      "difficulty": "hard",
+      "title": "在eth0上增加一条到达网络244.0.0.0的路由（设置掩码为240.0.0.0）：",
+      "answer": "route add -net 224.0.0.0 netmask 240.0.0.0 eth0",
+      "category": "Network"
+    },
+    {
+      "difficulty": "hard",
+      "title": "在当前目录下建立bin和bin下的os_1目录，权限设置为文件主可读、写、执行，同组用户可读和执行，其他用户无权访问：",
+      "answer": "mkdir -p -m 750 bin/os_1",
+      "category": "Filesystem"
+    },
+    {
+      "difficulty": "hard",
+      "title": "交互式地将目录/usr/men中的以m打头的所有.c文件复制到目录/usr/zh中：",
+      "answer": "cp -i /usr/men m*.c /usr/zh",
+      "category": "Filesystem"
     }
   ],
   "easyselect": [
@@ -105,7 +378,8 @@
         "ls -r t*",
         "ls -l t?"
       ],
-      "answer": "ls -l t*"
+      "answer": "ls -l t*",
+      "category": "Filesystem"
     },
     {
       "title": "下列命令中，删除以 -f 开头的文件的命令是？",
@@ -115,7 +389,122 @@
         "rm -f f*",
         "rm -f f?"
       ],
-      "answer": "rm -- -f*"
+      "answer": "rm -- -f*",
+      "category": "Filesystem"
+    },
+    {
+      "title": "下列命令中，将目前目录下的所有文件与子目录皆设为任何人可读取的命令是？",
+      "choices": [
+        "chmod -v a+r *",
+        "chmod -R o+r *",
+        "chmod -R a+r *",
+        "chmod -R 222 *"
+      ],
+      "answer": "chmod -R a+r *",
+      "category": "Filesystem"
+    },
+    {
+      "title": "下列命令中，查找目录/etc/acpi及其子目录下包含字符串update的文件，并打印出该字符串所在行的内容的命令是？",
+      "choices": [
+        "grep -rv update /etc/acpi",
+        "grep -v update /etc/acpi",
+        "grep update /etc/acpi",
+        "grep -r update /etc/acpi"
+      ],
+      "answer": "grep -r update /etc/acpi",
+      "category": "Misc"
+    }
+  ],
+  "mediumselect": [
+    {
+      "title": "命令“cat -n textfile1 textfile2 >> textfile3”的功能是？",
+      "choices": [
+        "把 textfile1 和 textfile2 的文档内容加上行号之后将内容写入到 textfile3 文档里",
+        "把 textfile1 的内容加上行号之后将内容写入到 textfile2 里，再将 textfile2 内容追加到textfile3里",
+        "把 textfile1 和 textfile2 的内容加上行号之后（空白行不加）将内容附加到 textfile3 文档里",
+        "把 textfile1 和 textfile2 的文档内容加上行号之后将内容附加到 textfile3 文档里"
+      ],
+      "answer": "把 textfile1 和 textfile2 的文档内容加上行号之后将内容附加到 textfile3 文档里",
+      "category": "Filesystem"
+    },
+    {
+      "title": "下列命令中，将当前目录所有文件与子目录的拥有者设为user，用户组设为usergroup的命令是？",
+      "choices": [
+        "chown -R user:usergroup *",
+        "chown -R usergroup:user *",
+        "chown -c user:usergroup *",
+        "chown -c usergroup:user *"
+      ],
+      "answer": "chown -R user:usergroup *",
+      "category": "Filesystem"
+    },
+    {
+      "title": "以下选项中，找出包含ssh字样的程序运行的端口的命令是？",
+      "choices": [
+        "netstat -a -n | ssh",
+        "netstat -an grep ssh",
+        "netstat -a -p grep ssh",
+        "netstat -ap | grep ssh"
+      ],
+      "answer": "netstat -ap | grep ssh",
+      "category": "Network"
+    }
+  ],
+  "hardselect": [
+    {
+      "title": "下列命令中，查找当前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件的命令是？",
+      "choices": [
+        "find . -type f -user 644 -exec ls -l {} \\",
+        "find . -type f -perm 644 -exec ls -l {} \\",
+        "find . -type c -perm 744 -exec ls -l {} \\",
+        "find . -type f -perm 722 -exec ls -l {} \\"
+      ],
+      "answer": "find . -type f -perm 644 -exec ls -l {} \\",
+      "category": "Filesystem"
+    },
+    {
+      "title": "命令“grep -v test *test*”的功能是？",
+      "choices": [
+        "查找文件名中包含 test 的文件中包含 test 的行",
+        "查找文件名中不包含 test 的文件中包含 test 的行",
+        "查找文件名中包含 test 的文件中不包含 test 的行",
+        "查找文件名中不包含 test 的文件中不包含 test 的行"
+      ],
+      "answer": "查找文件名中包含 test 的文件中不包含 test 的行",
+      "category": "Misc"
+    },
+    {
+      "title": "下列命令中，检测与主机114.80.174.110是否连通（发送周期为3s，包大小1024B，TTL 255）的命令是？",
+      "choices": [
+        "ping -i 3 -s 1024 -t 255 114.80.174.110",
+        "ping -c 3 -v 1024 -t 255 114.80.174.110",
+        "ping -I 3 -s 1024 -r 255 114.80.174.110",
+        "ping -r 3 -v 1024 -t 255 114.80.174.110"
+      ],
+      "answer": "ping -i 3 -s 1024 -t 255 114.80.174.110",
+      "category": "Network"
+    },
+    {
+      "title": "下列命令中，在网卡eth0启用ARP协议的命令是？",
+      "choices": [
+        "ifconfig eth0 arp up",
+        "ifconfig eth0 arp",
+        "ifconfig eth0 -arp",
+        "ifconfig -eth0 arp"
+      ],
+      "answer": "ifconfig eth0 arp",
+      "category": "Network"
+    },
+    {
+      "title": "以下命令中，不是显示UDP端口的统计信息的命令是？",
+      "choices": [
+        "netstat -su",
+        "netstat --statistics -u",
+        "netstat -s udp",
+        "netstat -s --udp"
+      ],
+      "answer": "netstat -s udp",
+      "category": "Network"
     }
   ]
 }

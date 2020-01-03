@@ -1,13 +1,13 @@
 {
   "name": "linux-lab",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "linux-lab help you practise linux commands via a set of exercises.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node dist/index.js",
-    "build": "npm run lint && npm run build:src",
+    "start": "shx rm -r dist && npm run build && node dist/src/index.js",
+    "build": "npm run lint && npm run build:src && shx cp db.json dist",
     "build:src": "tsc -p .",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm test && npm run build",
     "lint": "eslint \"src/**/*\"",
     "test": "cross-env NODE_ENV=test mocha -r espower-typescript/guess test/**/*.spec.ts"
   },
@@ -16,23 +16,30 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
+    "bash-parser": "^0.5.0",
     "enquirer": "^2.3.2",
+    "fast-deep-equal": "^3.1.1",
     "figlet": "^1.2.4",
+    "lodash": "^4.17.15",
     "lowdb": "^1.0.0",
     "terminal-kit": "^1.31.4"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.6",
     "@types/chalk": "^2.2.0",
     "@types/clear": "^0.1.0",
     "@types/figlet": "^1.2.0",
+    "@types/lodash": "^4.14.149",
     "@types/lowdb": "^1.0.9",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.5",
     "@types/terminal-kit": "^1.28.0",
+    "chai": "^4.2.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.6.0",
     "espower-typescript": "^9.0.2",
     "mocha": "^6.2.2",
+    "shx": "^0.3.2",
     "typescript": "^3.6.4"
   },
   "files": [
