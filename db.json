@@ -150,7 +150,13 @@
     },
     {
       "difficulty": "easy",
-      "title": "显示当前登录系统的用户，显示各栏位的标题信息列：",
+      "title": "显示当前登录系统的用户的命令是？",
+      "answer": "who",
+      "category": "System"
+    },
+    {
+      "difficulty": "easy",
+      "title": "显示当前登录系统的用户，并显示标题信息：",
       "answer": "who -H",
       "category": "System"
     }
