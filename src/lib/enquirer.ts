@@ -1,8 +1,20 @@
+import Enquirer, { StringPrompt } from "enquirer";
+
 export interface Question {
   title: string;
   choices?: string[];
   answer: string;
 }
+
+// TODO: 优化填空题敲命令体验
+export class QA extends StringPrompt {
+  constructor(options: any = {}) {
+    super(options);
+  }
+}
+
+const enquirer = new Enquirer();
+enquirer.register('qa', QA);
 
 // TODO: name: String(index) => name: String(question.id)
 /**
@@ -24,7 +36,7 @@ export function questionGenerator(rawQuestion: Record<string, any>[]) {
     if (!v.choices) {
       return {
         name: String(index),
-        type: "input",
+        type: "qa",
         message: `${index + 1}.${v.title}`
       };
     }
