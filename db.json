@@ -219,13 +219,13 @@
     {
       "difficulty": "medium",
       "title": "输入一个命令，显示 1.log 文件前 20 字节：",
-      "answer": "head -c 20 log2014.log",
+      "answer": "head -c 20 1.log",
       "category": "Filesystem"
     },
     {
       "difficulty": "medium",
-      "title": "输入一个命令，显示 t.log最后 10 行：",
-      "answer": "head -n -10 t.log",
+      "title": "输入一个命令，显示 t.log 最后 10 行：",
+      "answer": "tail -n 10 t.log",
       "category": "Filesystem"
     },
     {
