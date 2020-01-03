@@ -1,4 +1,4 @@
-import Enquirer, { StringPrompt } from "enquirer";
+// import Enquirer, { StringPrompt } from "enquirer";
 
 export interface Question {
   title: string;
@@ -7,14 +7,14 @@ export interface Question {
 }
 
 // TODO: 优化填空题敲命令体验
-export class QA extends StringPrompt {
-  constructor(options: any = {}) {
-    super(options);
-  }
-}
+// export class QA extends StringPrompt {
+//   constructor(options: any = {}) {
+//     super(options);
+//   }
+// }
 
-const enquirer = new Enquirer();
-enquirer.register('qa', QA);
+// const enquirer = new Enquirer();
+// enquirer.register('qa', QA);
 
 // TODO: name: String(index) => name: String(question.id)
 /**
@@ -36,7 +36,7 @@ export function questionGenerator(rawQuestion: Record<string, any>[]) {
     if (!v.choices) {
       return {
         name: String(index),
-        type: "qa",
+        type: "input",
         message: `${index + 1}.${v.title}`
       };
     }
