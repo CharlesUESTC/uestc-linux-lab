@@ -1,6 +1,6 @@
 {
   "name": "linux-lab",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "linux-lab help you practise linux commands via a set of exercises.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "build:src": "tsc -p .",
     "prepublishOnly": "npm test && npm run build",
     "lint": "eslint \"src/**/*\"",
-    "test": "cross-env NODE_ENV=test mocha -r espower-typescript/guess test/**/*.spec.ts"
+    "test": "cross-env NODE_ENV=test nyc --reporter=text mocha -r espower-typescript/guess test/**/*.spec.ts"
   },
   "author": "agrimonia",
   "license": "ISC",
@@ -39,6 +39,7 @@
     "eslint": "^6.6.0",
     "espower-typescript": "^9.0.2",
     "mocha": "^6.2.2",
+    "nyc": "^15.0.0",
     "shx": "^0.3.2",
     "typescript": "^3.6.4"
   },

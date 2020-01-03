@@ -151,6 +151,7 @@ declare module "enquirer" {
     class BooleanPrompt extends Prompt {}
     class NumberPrompt extends Prompt {}
     class StringPrompt extends Prompt {}
+    class Input extends Prompt {}
   }
   
   export = Enquirer;
