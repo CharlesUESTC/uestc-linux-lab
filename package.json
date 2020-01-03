@@ -20,6 +20,7 @@
     "enquirer": "^2.3.2",
     "fast-deep-equal": "^3.1.1",
     "figlet": "^1.2.4",
+    "lodash": "^4.17.15",
     "lowdb": "^1.0.0",
     "terminal-kit": "^1.31.4"
   },
@@ -28,6 +29,7 @@
     "@types/chalk": "^2.2.0",
     "@types/clear": "^0.1.0",
     "@types/figlet": "^1.2.0",
+    "@types/lodash": "^4.14.149",
     "@types/lowdb": "^1.0.9",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.5",
