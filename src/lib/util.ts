@@ -1,4 +1,6 @@
 import { isNumber } from "util";
+import parse from "bash-parser";
+import equal from "fast-deep-equal";
 
 /** 从 数组中随机选取 n 个元素 */
 export function random(arr: any[], n: number) {
@@ -27,4 +29,8 @@ export function random(arr: any[], n: number) {
     result.push(arr[m]);
   }
   return result;
+}
+
+export function similarCommand(cmd1: string, cmd2: string) {
+  return equal(parse(cmd1), parse(cmd2));
 }

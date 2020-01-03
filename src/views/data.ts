@@ -1,6 +1,6 @@
 import { terminal } from "terminal-kit";
 import { db } from "../lib/lowdb";
-import { UserProfile } from "../../db";
+import { UserProfile } from "../types/db";
 
 export function dataView(username: string) {
   terminal.clear();

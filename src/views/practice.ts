@@ -6,7 +6,7 @@ import { questionGenerator, Question } from "../lib/enquirer";
 import { db } from "../lib/lowdb";
 import { random } from "../lib/util";
 import { dataView } from "./data";
-import { UserProfile } from "../../db";
+import { UserProfile } from "../types/db";
 
 /** enquirer.prompt 的返回值 */
 export interface PromptRes {
@@ -74,6 +74,7 @@ function judge(rawQuestions: Question[], response: PromptRes) {
     mistakes: [] as MistakeInfo[]
   };
   rawQuestions.forEach((rawQuestion: Question, index: number) => {
+    // TODO: isEqual(rawQuestion.answer, userAnswers[index])
     if (rawQuestion.answer === userAnswers[index]) {
       result.solved += 1;
     } else {
